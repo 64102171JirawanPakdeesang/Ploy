@@ -67,7 +67,7 @@ class _UserFormState extends State<UserForm> {
   }
   Widget fnameInputField() {
     return TextFormField(
-      initialValue: "Jirawan Pakdeesang",
+      initialValue: user.fullname,
       decoration:
           InputDecoration(labelText: "Fullname:", icon: Icon(Icons.person)),
       validator: (value) {
@@ -107,20 +107,19 @@ class _UserFormState extends State<UserForm> {
   }
 
   Widget genderFormInput() {
-    return DropdownButtonFormField(
-        decoration:
-            InputDecoration(labelText: "Gender:", icon: Icon(Icons.man)),
-        value: 'None',
-        items: Configure.gender.map((String val) {
-          return DropdownMenuItem(
-            value: val,
-            child: Text(val),
-          );
-        }).toList(),
-        onChanged: (value) {
-          user.gender = value;
-        },
-        onSaved: (newValue) => user.gender);
+  var initGen = user.gender != null ? user.gender! : "None";
+  
+  return DropdownButtonFormField(
+    value: initGen,
+    decoration: InputDecoration(labelText: "Gender", icon: Icon(Icons.man)),
+    items: Configure.gender.map((String val) {
+      return DropdownMenuItem(value: val, child: Text(val));
+    }).toList(),
+    onChanged: (value) {
+      user.gender = value;
+    },
+    onSaved: (newValue) => user.gender = newValue,
+  );
   }
 
   Future<void> addNewUser(user) async {
