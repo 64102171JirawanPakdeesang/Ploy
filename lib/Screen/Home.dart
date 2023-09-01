@@ -1,6 +1,9 @@
+// ignore_for_file: sort_child_properties_last
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_11/Screen/UiDesign.dart';
 import 'package:flutter_application_11/Screen/sidemenu.dart';
+import 'package:flutter_application_11/Screen/user_info.dart';
 import 'package:flutter_application_11/model/config.dart';
 import 'package:flutter_application_11/model/users.dart';
 import 'package:http/http.dart' as http;
@@ -28,7 +31,14 @@ class _HomeState extends State<Home> {
               title: Text("${user.fullname}"),
               subtitle: Text("${user.email}"),
               onTap: () {
-
+                Navigator.push(context,
+                MaterialPageRoute(
+                  builder: (context) => UserInfo(),
+                  settings: RouteSettings(
+                    arguments: user
+                  )
+                  )
+                );
               },
               trailing: IconButton(
                 onPressed: () async {

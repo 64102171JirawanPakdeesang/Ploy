@@ -6,6 +6,13 @@
       "email": "jploy2908@gmail.com",
       "password": "ploy2545",
       "gender": "Female"
+    },
+    {
+      "id": 4,
+      "fullname": "JP",
+      "email": "jployJP2908@gmail.com",
+      "password": "ploy2546",
+      "gender": "Male"
     }
   ]
 }
